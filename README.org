@@ -1,0 +1,13 @@
+* Falling Balls Inferno
+
+A SpriteKit mini-game.
+
+** Day 45
+
+Introduction to SpriteKit.
+
+ - SKSpriteNode initialized from an image, or (color:,size:)
+ - SKPhysicsBody on the frame, and for rectangles or circles. Properties: isDynamic, resitution
+ - Detecting touches in touchesBegan() and placing objects on the touch's location
+
+[[day45.png]]
