@@ -11,3 +11,30 @@ Introduction to SpriteKit.
  - Detecting touches in touchesBegan() and placing objects on the touch's location
 
 [[day45.png]]
+** Day 46
+
+*** SKAction to roate a node:
+#+BEGIN_SRC Swift
+        let spin = SKAction.rotate(byAngle: .pi, duration: 10)
+        let spinForever = SKAction.repeatForever(spin)
+        slotGlow.run(spinForever)
+#+END_SRC
+*** Collision detection using: SKPhysicsContactDelegate
+First set the delegate to self:
+#+BEGIN_SRC Swift
+physicsWorld.contactDelegate = self
+#+END_SRC
+And then implement didBegin(_ contact), which contains bodyA and bodyB.
+*** SKLabelNode and detecting if the Label was touched
+In touchesBegan() get the location of the initial touch. Then search for nodes(at: thisLocation):
+#+BEGIN_SRC Swift
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        
+        // check if they tapped the edit label or it's outside
+        let objects = nodes(at: location)
+        if objects.contains(editLabel) {
+            editingMode.toggle()
+#+END_SRC
+
+[[day46.png]]
