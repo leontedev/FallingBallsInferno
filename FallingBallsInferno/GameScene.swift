@@ -6,6 +6,7 @@
 //  Copyright © 2019 Mihai Leonte. All rights reserved.
 //
 
+
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -19,8 +20,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             ballsLeftLabel.text = newLabel
+            
+            if ballsLeft == 0 {
+                let ac = UIAlertController(title: "Game over", message: "You have no balls remaining.", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Restart", style: .default, handler: { [weak self] _ in
+                    self?.restartGame()
+                }))
+                self.view?.window?.rootViewController?.present(ac, animated: true)
+            }
         }
     }
+    
     var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet {
@@ -34,6 +44,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 editLabel.text = "Done"
             } else {
                 editLabel.text = "Edit"
+            }
+        }
+    }
+    
+    func restartGame() {
+        ballsLeft = 5
+        score = 0
+        
+        for node in self.children {
+            if node.name == "box" {
+                node.removeFromParent()
             }
         }
     }
