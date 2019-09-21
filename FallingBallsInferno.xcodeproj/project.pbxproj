@@ -14,6 +14,8 @@
 		89EA7BBB233341E600FBFC0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EA7BB9233341E600FBFC0C /* Main.storyboard */; };
 		89EA7BBD233341E800FBFC0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89EA7BBC233341E800FBFC0C /* Assets.xcassets */; };
 		89EA7BC0233341E800FBFC0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EA7BBE233341E800FBFC0C /* LaunchScreen.storyboard */; };
+		89EA7BC823348E0C00FBFC0C /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89EA7BC723348E0C00FBFC0C /* FireParticles.sks */; };
+		89EA7BCA2334953900FBFC0C /* FirefliesParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89EA7BC92334953900FBFC0C /* FirefliesParticle.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		89EA7BBC233341E800FBFC0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89EA7BBF233341E800FBFC0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89EA7BC1233341E800FBFC0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89EA7BC723348E0C00FBFC0C /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
+		89EA7BC92334953900FBFC0C /* FirefliesParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FirefliesParticle.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				89EA7BB7233341E600FBFC0C /* GameViewController.swift */,
 				89EA7BB9233341E600FBFC0C /* Main.storyboard */,
 				89EA7BBC233341E800FBFC0C /* Assets.xcassets */,
+				89EA7BC723348E0C00FBFC0C /* FireParticles.sks */,
+				89EA7BC92334953900FBFC0C /* FirefliesParticle.sks */,
 				89EA7BBE233341E800FBFC0C /* LaunchScreen.storyboard */,
 				89EA7BC1233341E800FBFC0C /* Info.plist */,
 			);
@@ -129,7 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				89EA7BBB233341E600FBFC0C /* Main.storyboard in Resources */,
+				89EA7BCA2334953900FBFC0C /* FirefliesParticle.sks in Resources */,
 				89EA7BB2233341E600FBFC0C /* GameScene.sks in Resources */,
+				89EA7BC823348E0C00FBFC0C /* FireParticles.sks in Resources */,
 				89EA7BBD233341E800FBFC0C /* Assets.xcassets in Resources */,
 				89EA7BC0233341E800FBFC0C /* LaunchScreen.storyboard in Resources */,
 			);

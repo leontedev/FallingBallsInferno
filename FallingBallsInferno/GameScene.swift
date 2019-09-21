@@ -9,6 +9,18 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    let balls = ["ballBlue","ballCyan","ballGreen","ballGrey","ballPurple","ballRed","ballYellow"]
+    var ballsLeftLabel: SKLabelNode!
+    var ballsLeft = 5 {
+        didSet {
+            var newLabel = ""
+            for _ in 0..<ballsLeft {
+                newLabel += "🏀"
+            }
+            
+            ballsLeftLabel.text = newLabel
+        }
+    }
     var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet {
@@ -44,6 +56,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         editLabel.text = "Edit"
         editLabel.position = CGPoint(x: 80, y: 700)
         addChild(editLabel)
+        
+        ballsLeftLabel = SKLabelNode(fontNamed: "Chalkduster")
+        ballsLeftLabel.text = "🏀🏀🏀🏀🏀"
+        ballsLeftLabel.position = CGPoint(x: 910, y: 650)
+        addChild(ballsLeftLabel)
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
@@ -83,18 +100,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 box.position = location
                 box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                 box.physicsBody?.isDynamic = false
+                box.name = "box"
                 addChild(box)
             } else {
-                // create a ball
-                let ball = SKSpriteNode(imageNamed: "ballRed")
-                ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
-                // how "bouncy" something is. Default is 0.2. Values between 0 and 1. With 1 being the bounciest.
-                ball.physicsBody?.restitution = 0.4
-                // which collisions to be notified about - by default is none
-                ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
-                ball.position = location
-                ball.name = "ball"
-                addChild(ball)
+                // Challengr #2: Only touches at the top of the screen are allowed
+                if location.y > CGFloat(integerLiteral: 600)  && ballsLeft > 0 {
+                    // Challenge #1: create a ball with a random color
+                    let colorAssetName = balls.randomElement()!
+                    let ball = SKSpriteNode(imageNamed: colorAssetName)
+                    ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+                    // how "bouncy" something is. Default is 0.2. Values between 0 and 1. With 1 being the bounciest.
+                    ball.physicsBody?.restitution = 0.4
+                    // which collisions to be notified about - by default is none
+                    ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
+                    ball.position = location
+                    ball.name = "ball"
+                    addChild(ball)
+                    ballsLeft -= 1
+                }
             }
         }
     }
@@ -142,13 +165,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if object.name == "good" {
             destroy(ball: ball)
             score += 1
+            ballsLeft += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
+        } else if object.name == "box" {
+            object.removeFromParent()
         }
     }
     
     func destroy(ball: SKNode) {
+        if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
+            fireParticles.position = ball.position
+            addChild(fireParticles)
+        }
+        
         ball.removeFromParent()
     }
     

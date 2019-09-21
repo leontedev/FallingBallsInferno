@@ -2,6 +2,8 @@
 
 A SpriteKit mini-game.
 
+[[gif.gif]]
+
 ** Day 45
 
 Introduction to SpriteKit.
@@ -13,7 +15,7 @@ Introduction to SpriteKit.
 [[day45.png]]
 ** Day 46
 
-*** SKAction to roate a node:
+*** SKAction to rotate a node:
 #+BEGIN_SRC Swift
         let spin = SKAction.rotate(byAngle: .pi, duration: 10)
         let spinForever = SKAction.repeatForever(spin)
@@ -38,3 +40,8 @@ In touchesBegan() get the location of the initial touch. Then search for nodes(a
 #+END_SRC
 
 [[day46.png]]
+** Day 47 - Challenge
+
+1. The pictures we’re using in have other ball pictures rather than just “ballRed”. Try writing code to use a random ball color each time they tap the screen.
+2. Right now, users can tap anywhere to have a ball created there, which makes the game too easy. Try to force the Y value of new balls so they are near the top of the screen.
+3. Give players a limit of five balls, then remove obstacle boxes when they are hit. Can they clear all the pins with just five balls? You could make it so that landing on a green slot gets them an extra ball.
